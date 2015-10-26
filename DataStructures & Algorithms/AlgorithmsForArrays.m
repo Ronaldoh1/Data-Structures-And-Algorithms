@@ -6,13 +6,13 @@
 //  Copyright © 2015 Wahoo. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "AlgorithmsForArrays.h"
 
-@interface ViewController ()
+@interface AlgorithmsForArrays ()
 
 @end
 
-@implementation ViewController
+@implementation AlgorithmsForArrays
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -60,6 +60,11 @@
     NSLog(@"The count of each number in the array is => %@", [self getOccurancesForEachElementInArray:array2]);
 
     NSLog(@"The count of each number in array is (Regular Search) %@", [self regularGetOccurancesForEachElementinArray:array2]);
+
+    //8. Test Linear Search
+
+    NSLog(@"The object you're looking for is at index... %lu", (unsigned long)[self findIndexOfObjectInArrayViaLinearSearchWithArray:array2 andObjectToFind:@11]);
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -281,7 +286,48 @@
 }
 #pragma Mark - SEARCH STUFF 
 
-#pragma Mark - Linear Search
+#pragma Mark - Linear Search - Running time of O(n)
 
+-(NSUInteger )findIndexOfObjectInArrayViaLinearSearchWithArray:(NSArray *)array andObjectToFind:(id)object{
+
+   // NSUInteger *index = 0;
+
+    for (id obj in array) {
+        if ([object isEqual:obj]) {
+
+            return [array indexOfObject:obj];
+        }
+    }
+
+    return NSNotFound;
+}
+
+#pragma Mark - Binary Search 
+//Binary search devides range of values into halves and continues to narrow down the field of search until the unkown value is found.
+//For Binary Search - the array has be sorted. 
+
+-(NSUInteger)findIndexOfObjectViaBinarySearchForArray:(NSArray *)array andFindObject:(id)object{
+
+    NSUInteger firstIndex = 0;
+
+    NSUInteger upTOIndex = [array count];
+
+    while (firstIndex < upTOIndex) {
+
+        NSUInteger mid = array.count / 2;
+
+
+        if ([object compare:array[mid]] ==NSOrderedAscending) {
+            upTOIndex = mid;
+
+        }else if ([object compare:array[mid]] == NSOrderedDescending){
+            firstIndex = mid + 1;
+        }else {
+            return  mid;
+        }
+    }
+
+    return NSNotFound;
+}
 
 @end
