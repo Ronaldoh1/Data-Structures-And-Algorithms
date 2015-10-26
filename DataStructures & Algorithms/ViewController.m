@@ -39,6 +39,27 @@
     NSString *shortestString = [self findShortestStringinArray:stringArray];
     NSLog(@"%@ is the shortest string", shortestString);
 
+    //4. Test intersection
+    NSArray *array1 = [NSArray arrayWithObjects:@4, @3, @8, @10, @1, nil];
+    NSArray *array2 = [NSArray arrayWithObjects:@4, @1, @8, @11, @1, @4, nil];
+
+    NSLog(@"The intersection is %@", [self findInterSectionOfArray:array1 andSecondArray:array2]);
+
+//4. Test the union of two arrays.
+    NSLog(@"The union is %@", [self findTheUnionWithoutDuplictesOfArray:array1 andSecondArray:array2]);
+
+    //5. Test for Duplicates
+
+    NSLog(@"array 2 has the following duplicates %@", [self getDuplicatesFromArray:array2]);
+
+    //6. Test for Sum
+
+    NSLog(@"The sum of the elements in array are %@", [self computeSumOfElementsForArray:array2]);
+
+    //7. Test the count of each object in the Set
+    NSLog(@"The count of each number in the array is => %@", [self getOccurancesForEachElementInArray:array2]);
+
+    NSLog(@"The count of each number in array is (Regular Search) %@", [self regularGetOccurancesForEachElementinArray:array2]);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -129,23 +150,138 @@
 
 
 #pragma mark - Intersection of two arrays
-//strategy is to use the
+//strategy is to use to use two sets initialized with arrays and use the built in intersection method of the two arrays.
 
+-(NSArray *)findInterSectionOfArray:(NSArray *)firstArray andSecondArray:(NSArray *)secondArray{
 
+    NSMutableSet *intersection = [NSMutableSet setWithArray:firstArray];
 
+    [intersection intersectSet:[NSMutableSet setWithArray:secondArray]];
 
-
-
-
-
-
-
-- (NSArray *)intersectionWithArray:(NSArray *)secondArray
-{
-    NSMutableSet *intersection = [NSMutableSet setWithArray:self];
-    [intersection intersectSet:[NSSet setWithArray:secondArray]];
 
     return [intersection allObjects];
+
 }
+
+#pragma mark - find the Union of two arrays 
+
+//to find the union of two arrays, we simply use two sets and call the union operation
+-(NSArray *)findTheUnionWithoutDuplictesOfArray:(NSArray *)firstArray andSecondArray:(NSArray *)secondArray{
+
+    NSMutableSet *set2 = [NSMutableSet setWithArray:secondArray];
+
+    NSMutableSet *unionSet = [NSMutableSet setWithArray:firstArray];
+
+    [unionSet unionSet:set2];
+
+    return [unionSet allObjects];
+
+}
+
+#pragma Mark - Find Duplicates
+
+-(BOOL)hasDuplicates:(NSMutableDictionary *)dictionary{
+
+    for (id element in dictionary) {
+
+        NSNumber *elementHash = @([element hash]);
+
+        if (dictionary[elementHash] == nil) {
+            dictionary[elementHash] = element;
+        }else{
+            NSLog(@"Dictionary has duplicates %@ and %@", dictionary[elementHash], element);
+        }
+
+    }
+
+
+
+    return NO;
+}
+
+//Most effecient way to find duplicates in an array is to use NSCountedSet
+-(NSArray *)getDuplicatesFromArray:(NSArray *)array{
+
+    NSCountedSet *countedSet = [[NSCountedSet alloc]initWithArray:array];
+    NSMutableArray *duplicates = [NSMutableArray new];
+
+    NSLog(@"Object count greater than 1");
+
+    for (NSNumber *num in countedSet){
+        if ([countedSet countForObject:num] > 1) {
+
+            NSLog(@"Array has duplicates");
+            [duplicates addObject:num];
+
+        }
+    }
+
+    return duplicates.copy;
+
+}
+
+#pragma mark - the sum of elments 
+
+-(NSNumber *)computeSumOfElementsForArray:(NSArray *)array{
+
+    long long sum = 0;
+
+    for (NSNumber *num in array) {
+
+        sum += [num longLongValue];
+    }
+
+    return @(sum);
+}
+
+#pragma mark - Find Occurances of each element in Array
+
+//We want to use an NSCountedSet
+/* 1. create an NSCountedSet with the array. 
+ 2. create a dictionary that will hold the object as key and value will bethe count. 
+ 3. We need an array to hold all the objects from the set. 
+ 4. We iterate through the array of all objects and for each object, we add it to the dictionary and set its value to the count of the object in the set
+ 
+ */
+
+-(NSDictionary *)getOccurancesForEachElementInArray:(NSArray *)array{
+
+    NSCountedSet *countedSet = [[NSCountedSet alloc]initWithArray:array];
+
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+
+    NSArray *setOfAllObjects = [countedSet allObjects];
+
+    for (id object in setOfAllObjects) {
+
+        dictionary[object] = @([countedSet countForObject:object]);
+    }
+
+    return dictionary.copy;
+}
+
+//We could also do it with out using CocoaTouch methods.
+
+-(NSDictionary *)regularGetOccurancesForEachElementinArray:(NSArray *)array{
+
+    NSMutableDictionary *dictionary = [NSMutableDictionary new];
+
+    for (int i = 0; i<array.count; i++) {
+
+        id currentElement = array[i];
+        NSNumber *existingElementCounter = dictionary[currentElement];
+
+        NSUInteger currentCount = existingElementCounter ? existingElementCounter.unsignedIntegerValue : 0;
+        currentCount ++;
+        dictionary[currentElement] = @(currentCount);
+    }
+
+    return dictionary;
+
+}
+#pragma Mark - SEARCH STUFF 
+
+#pragma Mark - Linear Search
+
 
 @end
