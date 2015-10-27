@@ -25,6 +25,14 @@
    NSLog(@"The factorial of 5 is %lu", (unsigned long)[self findTheFactorialOfNumber:@5]);
 
     NSLog(@"The fibonnaci sum until 20 is %@ " , [self fibonacciNumbersUpToNumber:20]);
+
+    NSLog(@"The recursive solution for fibonacci is %lld", [self recursiveFibonacciNumber:20]);
+
+    NSLog(@"The sum of the digits of 12 is %lu", [self sumOfDigitsOfNumber:@12]);
+    NSLog(@"Number with exponents %ld", [self fastExponentialForNumber:10 withPower:3]);
+
+    BOOL t = [self checkForEvenForNumber:24];
+    NSLog(@"the number 24 is EVEN %@", t ? @"YES" : @"NO");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -85,6 +93,58 @@
 
     return resultsArray;
 
+}
+
+-(long long int)recursiveFibonacciNumber:(NSUInteger)index{
+
+    if (index == 0) {
+        return (long long)0;
+    } else if(index == 1){
+        return (long long)1;
+    } else{
+
+        return [self recursiveFibonacciNumber:index-2] + [self recursiveFibonacciNumber:index - 1];
+    }
+}
+
+
+#pragma mark - sum of digits of a number
+
+-(NSUInteger)sumOfDigitsOfNumber:(NSNumber *)number{
+
+    NSUInteger digit = [number unsignedIntegerValue];
+
+    NSUInteger sum = 0;
+
+    while (digit != 0) {
+        sum = sum + digit % 10;
+        digit = digit / 10;
+
+    }
+    return  sum;
+}
+
+#pragma mark - Fast Exponential 
+
+-(NSInteger)fastExponentialForNumber:(NSInteger)number withPower:(NSInteger)power{
+
+    NSInteger result = 1;
+
+    while (power) {
+        if (power % 2 == 1) {
+            result *=number;
+        }
+        power /= 2;
+        number *= number;
+    }
+    return  result;
+}
+
+#pragma Mark  - is Even/Odd 
+
+-(BOOL)checkForEvenForNumber:(NSInteger)number{
+
+    return (number % 2 == 0) ? YES : NO;
 }
 
 @end
