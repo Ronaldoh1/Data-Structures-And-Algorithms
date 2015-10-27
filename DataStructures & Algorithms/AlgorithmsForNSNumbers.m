@@ -33,6 +33,11 @@
 
     BOOL t = [self checkForEvenForNumber:24];
     NSLog(@"the number 24 is EVEN %@", t ? @"YES" : @"NO");
+
+    NSLog(@"is 32 a prime Number %@", [self checkForPrimeForNumber:32] ? @"YES" : @"NO");
+
+
+    NSLog(@"is 3 a prime Number %@", [self checkForPrimeForNumber:3] ? @"YES" : @"NO");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -145,6 +150,21 @@
 -(BOOL)checkForEvenForNumber:(NSInteger)number{
 
     return (number % 2 == 0) ? YES : NO;
+}
+
+#pragma mark - Leap Year Check 
+-(BOOL)checkForPrimeForNumber:(NSInteger)number{
+
+    if (number == 0 && number == 1) {
+        return  NO;
+    }
+
+    for (int i = 2; i<(int)sqrt(number); i++) {
+        if (number % i == 0) {
+            return NO;
+        }
+    }
+    return YES;
 }
 
 @end
