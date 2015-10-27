@@ -302,7 +302,7 @@
     return NSNotFound;
 }
 
-#pragma Mark - Binary Search 
+#pragma Mark - Binary Search O(n)
 //Binary search devides range of values into halves and continues to narrow down the field of search until the unkown value is found.
 //For Binary Search - the array has be sorted. 
 
