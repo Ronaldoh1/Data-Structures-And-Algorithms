@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		F269EE001BDF16680090B8DF /* AlgorithmsForNSNumbers.m in Sources */ = {isa = PBXBuildFile; fileRef = F269EDFF1BDF16680090B8DF /* AlgorithmsForNSNumbers.m */; };
+		F2B9115C1BDF6D1200FABD42 /* NSStringVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B9115B1BDF6D1200FABD42 /* NSStringVC.m */; };
+		F2B911601BDF747C00FABD42 /* Node.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B9115F1BDF747C00FABD42 /* Node.m */; };
+		F2B911631BDF749000FABD42 /* LinkedList.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B911621BDF749000FABD42 /* LinkedList.m */; };
 		F2BD66C61BDE000E00D189F3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BD66C51BDE000E00D189F3 /* main.m */; };
 		F2BD66C91BDE000E00D189F3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BD66C81BDE000E00D189F3 /* AppDelegate.m */; };
 		F2BD66CC1BDE000E00D189F3 /* AlgorithmsForArrays.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BD66CB1BDE000E00D189F3 /* AlgorithmsForArrays.m */; };
@@ -31,6 +34,12 @@
 /* Begin PBXFileReference section */
 		F269EDFE1BDF16680090B8DF /* AlgorithmsForNSNumbers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlgorithmsForNSNumbers.h; sourceTree = "<group>"; };
 		F269EDFF1BDF16680090B8DF /* AlgorithmsForNSNumbers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlgorithmsForNSNumbers.m; sourceTree = "<group>"; };
+		F2B9115A1BDF6D1200FABD42 /* NSStringVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringVC.h; sourceTree = "<group>"; };
+		F2B9115B1BDF6D1200FABD42 /* NSStringVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringVC.m; sourceTree = "<group>"; };
+		F2B9115E1BDF747C00FABD42 /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
+		F2B9115F1BDF747C00FABD42 /* Node.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Node.m; sourceTree = "<group>"; };
+		F2B911611BDF749000FABD42 /* LinkedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkedList.h; sourceTree = "<group>"; };
+		F2B911621BDF749000FABD42 /* LinkedList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkedList.m; sourceTree = "<group>"; };
 		F2BD66C11BDE000E00D189F3 /* DataStructures & Algorithms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DataStructures & Algorithms.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2BD66C51BDE000E00D189F3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F2BD66C71BDE000E00D189F3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -66,6 +75,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F2B9115D1BDF741800FABD42 /* LinkedList */ = {
+			isa = PBXGroup;
+			children = (
+				F2B9115E1BDF747C00FABD42 /* Node.h */,
+				F2B9115F1BDF747C00FABD42 /* Node.m */,
+				F2B911611BDF749000FABD42 /* LinkedList.h */,
+				F2B911621BDF749000FABD42 /* LinkedList.m */,
+			);
+			name = LinkedList;
+			sourceTree = "<group>";
+		};
 		F2BD66B81BDE000E00D189F3 = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +107,7 @@
 		F2BD66C31BDE000E00D189F3 /* DataStructures & Algorithms */ = {
 			isa = PBXGroup;
 			children = (
+				F2B9115D1BDF741800FABD42 /* LinkedList */,
 				F2BD66CA1BDE000E00D189F3 /* AlgorithmsForArrays.h */,
 				F2BD66C71BDE000E00D189F3 /* AppDelegate.h */,
 				F2BD66C81BDE000E00D189F3 /* AppDelegate.m */,
@@ -95,6 +116,8 @@
 				F2BD66EA1BDE9C9C00D189F3 /* AlgorithmsForDictionaries.m */,
 				F269EDFE1BDF16680090B8DF /* AlgorithmsForNSNumbers.h */,
 				F269EDFF1BDF16680090B8DF /* AlgorithmsForNSNumbers.m */,
+				F2B9115A1BDF6D1200FABD42 /* NSStringVC.h */,
+				F2B9115B1BDF6D1200FABD42 /* NSStringVC.m */,
 				F2BD66D51BDE000E00D189F3 /* Info.plist */,
 				F2BD66D01BDE000E00D189F3 /* Assets.xcassets */,
 				F2BD66D21BDE000E00D189F3 /* LaunchScreen.storyboard */,
@@ -221,7 +244,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2B9115C1BDF6D1200FABD42 /* NSStringVC.m in Sources */,
 				F2BD66CC1BDE000E00D189F3 /* AlgorithmsForArrays.m in Sources */,
+				F2B911631BDF749000FABD42 /* LinkedList.m in Sources */,
+				F2B911601BDF747C00FABD42 /* Node.m in Sources */,
 				F2BD66EB1BDE9C9C00D189F3 /* AlgorithmsForDictionaries.m in Sources */,
 				F2BD66C91BDE000E00D189F3 /* AppDelegate.m in Sources */,
 				F2BD66C61BDE000E00D189F3 /* main.m in Sources */,

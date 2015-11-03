@@ -167,4 +167,35 @@
     return YES;
 }
 
+
+#pragma Mark - Find Nth Prime Number
+
+-(NSInteger)findNthPrimeNumber:(NSInteger)n{
+
+    NSInteger number = 1, count = 0, i = 0;
+
+
+    while (count < n) {
+        number = number + 1;
+        for (i = 0; i<=number; i++) {
+            if (number % i == 0) {
+                break;
+            }
+        }
+        if (i == number) {
+
+            count = count + 1;
+        }
+    }
+    return number;
+}
++ (CGFloat)absoluteValue:(CGFloat)number
+{
+    if (number < 0) {
+        number = -number;
+    }
+
+    return number;
+}
+
 @end
